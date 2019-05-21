@@ -1,5 +1,5 @@
 const holes = document.querySelectorAll('.hole');
-const scores = document.querySelectorAll('.score');
+const scoreBoard = document.querySelectorAll('.score');
 const moles = document.querySelectorAll('.mole');
 
 let score = 0;
@@ -32,9 +32,18 @@ function mole() {
 }
 
 function startTheGame() {
-  score.textContent = 0;
+  scoreBoard.textContent = 0;
   timeUp = false;
   score = 0;
   mole();
   setTimeout(() => timeUp = true, 1000);
 }
+
+function bonk(e) {
+  if(!e.isTrusted) return; // cheater!
+  score++;
+  this.parentNode.classList.remove('up');
+  scoreBoard.textContent = score;
+}
+
+moles.forEach(mole => mole.addEventListener('click', bonk));
