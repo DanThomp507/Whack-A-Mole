@@ -1,6 +1,9 @@
 html {
   background-color: #E1D345;
 }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 body {
   font-family: 'Indie Flower', cursive;
 }

@@ -2,9 +2,10 @@ const holes = document.querySelectorAll('.hole');
 const scoreBoard = document.querySelectorAll('.score');
 const moles = document.querySelectorAll('.mole');
 
-let score = 0;
+
 let lastHole;
 let timeUp = false;
+let score = 0;
 
 function randomTime(min, max) {
   return Math.round(Math.random() * (max - min) + min);
@@ -40,10 +41,9 @@ function startTheGame() {
 }
 
 function bonk(e) {
-  if(!e.isTrusted) return; // cheater!
+  if(!e.isTrusted) return;
   score++;
   this.parentNode.classList.remove('up');
   scoreBoard.textContent = score;
 }
-
 moles.forEach(mole => mole.addEventListener('click', bonk));
